@@ -1,0 +1,28 @@
+.header {
+  grid-area: header;
+  color: white;
+  background: #020203;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  &__logo {
+    height: 58px;
+    margin-left: 29px;
+  }
+}
+
+.nav {
+  width: 100%;
+}
+.nav ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  justify-content: space-around;
+  & li {
+    display: inline-block;
+  }
+}
