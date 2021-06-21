@@ -1,6 +1,11 @@
 .card {
   display: flex;
   align-items: center;
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-bottom: 32px;
+  height: 124px;
+  width: 258px;
   &__image {
     width: 60px;
     height: 60px;

@@ -1,7 +1,7 @@
 .app {
   display: grid;
   grid-template-columns: 117px auto;
-  grid-template-rows: 91px calc(100vh - 91px - 250px) 250px;
+  grid-template-rows: 91px 1fr 250px;
 
   grid-template-areas:
     "header header"
