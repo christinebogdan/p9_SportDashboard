@@ -8,4 +8,13 @@
     "charts cards";
   padding-top: 68px;
   padding-left: 107px;
+  &__content {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.chartsOverview {
+  display: flex;
+  flex-wrap: wrap;
 }
