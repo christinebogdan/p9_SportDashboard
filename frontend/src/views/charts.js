@@ -14,11 +14,19 @@ class Charts extends React.Component {
           <Chart type="lineChart" user={this.user} />
         </div>
         <div className={`chart radarchart`}>
-          <Chart type="radarChart" user={this.user} />
+          <Chart
+            type="radarChart"
+            user={this.user}
+            endpoint={`http://localhost:3000/user/${this.user}/performance`}
+          />
         </div>
         <div className={`chart piechart`}>
-          <h3 className="piechart__headline">Score</h3>
-          <Chart type="pieChart" user={this.user} />
+          <h3 className="pieChart__headline">Score</h3>
+          <Chart
+            type="pieChart"
+            user={this.user}
+            endpoint={`http://localhost:3000/user/${this.user}`}
+          />
         </div>
       </div>
     );

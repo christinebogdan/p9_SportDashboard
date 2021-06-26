@@ -12,7 +12,7 @@ class ChartPie extends React.Component {
   constructor(props) {
     super(props);
     this.user = this.props.user;
-    this.endpoint = `http://localhost:3000/user/${this.user}`;
+    this.endpoint = this.props.endpoint;
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
