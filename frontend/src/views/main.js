@@ -17,7 +17,7 @@ class Main extends React.Component {
         <Greeting name={this.name} />
         <div className="main__content">
           <div className="chartsOverview">
-            <DailyActivity user={this.user} endpoint="activity" />
+            <DailyActivity user={this.user} />
             <Charts user={this.user} />
           </div>
           <Cards user={this.user} />

@@ -1,16 +1,11 @@
 .main {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-area: main;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas:
-    "greeting greeting"
-    "daily cards"
-    "charts cards";
   padding-top: 68px;
   padding-left: 107px;
   &__content {
     display: flex;
-    justify-content: space-around;
   }
 }
 
