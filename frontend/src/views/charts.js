@@ -11,7 +11,11 @@ class Charts extends React.Component {
     return (
       <div className="charts">
         <div className={`chart linechart`}>
-          <Chart type="lineChart" user={this.user} />
+          <Chart
+            type="lineChart"
+            user={this.user}
+            endpoint={`http://localhost:3000/user/${this.user}/performance`}
+          />
         </div>
         <div className={`chart radarchart`}>
           <Chart

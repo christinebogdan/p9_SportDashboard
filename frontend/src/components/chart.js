@@ -3,6 +3,7 @@ import "../styles/chart.scss";
 import ChartBar from "../components/barChart";
 import ChartPie from "./pieChart";
 import ChartRadar from "./radarChart";
+import ChartLine from "./lineChart";
 // import {
 //   ResponsiveContainer,
 //   BarChart,
@@ -70,6 +71,7 @@ class Chart extends React.Component {
   // }
 
   render() {
+    console.log("render: ", this.type);
     if (this.type === "barChart") {
       return (
         <ChartBar user={this.user} endpoint={this.endpoint} />
@@ -130,7 +132,7 @@ class Chart extends React.Component {
         // </ResponsiveContainer>
       );
     } else if (this.type === "lineChart") {
-      return <div className="chart">LineChart</div>;
+      return <ChartLine user={this.user} endpoint={this.endpoint} />;
     } else if (this.type === "radarChart") {
       return <ChartRadar user={this.user} endpoint={this.endpoint} />;
     } else if (this.type === "pieChart") {

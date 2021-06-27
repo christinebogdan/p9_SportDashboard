@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  PieChart,
-  Pie,
-  Sector,
-  Label,
-  Cell,
-  ResponsiveContainer,
-} from "recharts";
+import { PieChart, Pie, Label, Cell, ResponsiveContainer } from "recharts";
 
 class ChartPie extends React.Component {
   constructor(props) {
@@ -30,12 +23,11 @@ class ChartPie extends React.Component {
       );
   }
 
-  formatData(input) {
-    let formattedData = [
-      { name: "todayScore", value: input["todayScore"] },
-      { name: "placeholder", value: 1 - input["todayScore"] },
+  formatData({ todayScore }) {
+    return [
+      { name: "todayScore", value: todayScore },
+      { name: "placeholder", value: 1 - todayScore },
     ];
-    return formattedData;
   }
 
   // how can I use props and dataInput here?
@@ -62,12 +54,25 @@ class ChartPie extends React.Component {
   //   );
   // }
 
-  formatLabel({ viewBox }) {
+  formatLabel({ viewBox }, dataInput) {
+    console.log(dataInput);
     const { cx, cy } = viewBox;
 
     return (
       <>
-        <text x={cx - 28} y={cy + 35}>
+        {/* <text x={cx - 15} y={cy - 5}>
+          <tspan
+            style={{
+              fontWeight: 700,
+              fontSize: "1.5em",
+              fill: "#2B5CE7",
+              fontFamily: "Roboto",
+            }}
+          >
+            {`${dataInput[0].value * 100}%`}{" "}
+          </tspan>
+        </text> */}
+        <text x={cx - 27} y={cy + 35}>
           <tspan
             style={{
               fontWeight: 500,
@@ -96,10 +101,11 @@ class ChartPie extends React.Component {
   }
 
   render() {
+    console.log(this.state.data);
     let dataInput = this.formatData(this.state.data);
     console.log(dataInput);
     return (
-      <ResponsiveContainer>
+      <ResponsiveContainer width="99%" debounce={1}>
         <PieChart>
           <Pie
             data={dataInput}
@@ -130,7 +136,7 @@ class ChartPie extends React.Component {
                 fontFamily: "Roboto",
               }}
             />
-            <Label content={this.formatLabel} />
+            <Label content={(a) => this.formatLabel(a, dataInput)} />
           </Pie>
         </PieChart>
       </ResponsiveContainer>

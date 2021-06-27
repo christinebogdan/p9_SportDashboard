@@ -75,7 +75,7 @@ class ChartBar extends React.Component {
       return (
         <div className="barChart__tooltip">
           <p className="barChart__tooltip-kg">{`${payload[0].value}kg`}</p>
-          <p className="barChart__tooltip-cal">{`${payload[1].value}cKal`}</p>
+          <p className="barChart__tooltip-cal">{`${payload[1].value}kCal`}</p>
         </div>
       );
     }
@@ -84,10 +84,9 @@ class ChartBar extends React.Component {
 
   render() {
     return (
-      <ResponsiveContainer>
+      <ResponsiveContainer width="99%" debounce={1}>
         <BarChart data={this.state.data.sessions} barGap={8} barSize={7}>
-          <CartesianGrid strokeDasharray="2 2" vertical={false} />
-
+          <CartesianGrid strokeDasharray="1 2" vertical={false} />
           <XAxis
             padding={{ left: 10, right: 10 }}
             scale="point"
