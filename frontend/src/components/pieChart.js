@@ -55,7 +55,6 @@ class ChartPie extends React.Component {
   // }
 
   formatLabel({ viewBox }, dataInput) {
-    console.log(dataInput);
     const { cx, cy } = viewBox;
 
     return (
@@ -105,7 +104,7 @@ class ChartPie extends React.Component {
     let dataInput = this.formatData(this.state.data);
     console.log(dataInput);
     return (
-      <ResponsiveContainer width="99%" debounce={1}>
+      <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <PieChart>
           <Pie
             data={dataInput}
