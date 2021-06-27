@@ -17,18 +17,6 @@ class ChartBar extends React.Component {
     this.endpoint = this.props.endpoint;
     this.user = this.props.user;
     this.state = { error: null, isLoaded: false, data: {} };
-
-    // this.input = {
-    //   sessions: [
-    //     { day: "2020-07-01", kilogram: 80, calories: 240 },
-    //     { day: "2020-07-02", kilogram: 80, calories: 220 },
-    //     { day: "2020-07-03", kilogram: 81, calories: 280 },
-    //     { day: "2020-07-04", kilogram: 81, calories: 290 },
-    //     { day: "2020-07-05", kilogram: 80, calories: 160 },
-    //     { day: "2020-07-06", kilogram: 78, calories: 162 },
-    //     { day: "2020-07-07", kilogram: 76, calories: 390 },
-    //   ],
-    // };
   }
 
   componentDidMount() {
@@ -84,7 +72,7 @@ class ChartBar extends React.Component {
 
   render() {
     return (
-      <ResponsiveContainer width="99%" debounce={1}>
+      <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <BarChart data={this.state.data.sessions} barGap={8} barSize={7}>
           <CartesianGrid strokeDasharray="1 2" vertical={false} />
           <XAxis
