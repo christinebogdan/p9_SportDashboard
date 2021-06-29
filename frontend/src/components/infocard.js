@@ -11,7 +11,9 @@ class Infocard extends React.Component {
     super(props);
     this.user = this.props.user;
     this.topic = this.props.topic;
-    this.state = { error: null, isLoaded: false, data: {} };
+    // this.state = { error: null, isLoaded: false, data: {} };
+    // this.state = { data: this.props.data };
+    this.data = this.props.data;
     this.images = {
       calorieCount,
       proteinCount,
@@ -26,29 +28,26 @@ class Infocard extends React.Component {
   //   console.log("component did mount");
   // }
 
-  componentDidMount() {
-    console.log("innen");
-    getData(this.user, this.endpoint).then((response) => {
-      this.setState(response);
-    });
-    console.log("außen");
-  }
+  // componentDidMount() {
+  //   getData(this.user, this.endpoint).then((response) => {
+  //     this.setState(response);
+  //   });
+  // }
 
   render() {
     // sometimes pulls data, and sometimes doesn't - despite this.state - why did I
     // have to move api call into component?
 
     // difference between this and App.js format?
-    console.log(this.state.data);
     return (
       <div className="card">
         <img src={this.images[this.topic]} alt="" className="card__image"></img>
         <div className="card__text">
           <p className="card__text--stat">
-            {/* {this.state.data.keyData.proteinCount} */}
-            {this.state.data.keyData !== undefined
+            {this.props.data !== undefined ? this.props.data : null}
+            {/* {this.state.data.keyData !== undefined
               ? this.state.data.keyData[this.topic]
-              : null}
+              : null} */}
           </p>
           <p className="card__text--cat">
             {this.topic === "calorieCount"
