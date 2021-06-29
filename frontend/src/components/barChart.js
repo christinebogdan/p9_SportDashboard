@@ -10,6 +10,7 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
+import getData from "../helper/fetchData";
 
 class ChartBar extends React.Component {
   constructor(props) {
@@ -20,25 +21,34 @@ class ChartBar extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.endpoint)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ isLoaded: true, data: result.data });
-        },
-
-        (error) => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
+    // wieso geht das hier mit ".then"? Weil fetch ne promise returned? und damit
+    // dann auch getData eine promise returned?
+    getData(this.user, this.endpoint).then((response) => {
+      this.setState(response);
+    });
   }
 
+  /**
+   * Formats tick to only display the number of the day of the month
+   * @param {string} day - Date of the day in format "yyyy-mm-dd"
+   * @returns {number} The number of the day of the month
+   */
   dayTickFormatter(day) {
     const date = new Date(day);
+    // hier zusammenfassen und direkt returnen
     const dataKey = date.getDate();
     return dataKey;
   }
 
+  // is SpanElement the correct type?
+
+  /**
+   * Creates styled spans for the chart's legend text items
+   * @param {string} value - Name of the corresponding bars
+   * @returns {HTMLSpanElement} Span element wrapping the value param with styling
+   */
+
+  // rename to getStyledLegendText
   renderLegendTextColor(value) {
     return (
       <span
@@ -56,8 +66,15 @@ class ChartBar extends React.Component {
     );
   }
 
-  // was heißt das any? ist das destructuring? stand: {active, payload}: any
-  // why do arguments need to be in {}
+  // how about parameters that are automatically handed to function?
+
+  /**
+   * Creates styled div element for custom tooltip
+   * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
+   * @param {Object} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @returns {HTMLDivElement} Div element containing the markup and custom styling
+   */
+  // umbenennen zu Verb und Object - get/createCustomTooltipElement
   customTooltip({ active, payload }) {
     if (active && payload && payload.length) {
       return (

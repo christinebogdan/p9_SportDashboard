@@ -18,23 +18,15 @@ class Charts extends React.Component {
           <Chart
             type="lineChart"
             user={this.user}
-            endpoint={`http://localhost:3000/user/${this.user}/average-sessions`}
+            endpoint={"/average-sessions"}
           />
         </div>
         <div className={`chart radarchart`}>
-          <Chart
-            type="radarChart"
-            user={this.user}
-            endpoint={`http://localhost:3000/user/${this.user}/performance`}
-          />
+          <Chart type="radarChart" user={this.user} endpoint={"/performance"} />
         </div>
         <div className={`chart piechart`}>
           <h3 className="pieChart__headline">Score</h3>
-          <Chart
-            type="pieChart"
-            user={this.user}
-            endpoint={`http://localhost:3000/user/${this.user}`}
-          />
+          <Chart type="pieChart" user={this.user} />
         </div>
       </div>
     );

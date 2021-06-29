@@ -1,5 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Label, Cell, ResponsiveContainer } from "recharts";
+import getData from "../helper/fetchData";
 
 class ChartPie extends React.Component {
   constructor(props) {
@@ -10,49 +11,22 @@ class ChartPie extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.endpoint)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ isLoaded: true, data: result.data });
-        },
-
-        (error) => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
+    getData(this.user, this.endpoint).then((response) => {
+      this.setState(response);
+    });
   }
 
+  /**
+   * Format data from API call to fit to Rechart's expected data format
+   * @param {*} param0
+   * @returns
+   */
   formatData({ todayScore }) {
     return [
       { name: "todayScore", value: todayScore },
       { name: "placeholder", value: 1 - todayScore },
     ];
   }
-
-  // how can I use props and dataInput here?
-
-  // formatLabel({ viewBox, dataInput = {} }) {
-  //   const { cx, cy } = viewBox;
-
-  //   console.log(viewBox);
-  //   console.log(dataInput);
-
-  //   return (
-  //     <text x={cx - 15} y={cy - 5}>
-  //       <tspan
-  //         style={{
-  //           fontWeight: 700,
-  //           fontSize: "1.5em",
-  //           fill: "#2B5CE7",
-  //           fontFamily: "Roboto",
-  //         }}
-  //       >
-  //         {dataInput}
-  //       </tspan>
-  //     </text>
-  //   );
-  // }
 
   formatLabel({ viewBox }, dataInput) {
     const { cx, cy } = viewBox;
@@ -100,9 +74,7 @@ class ChartPie extends React.Component {
   }
 
   render() {
-    console.log(this.state.data);
     let dataInput = this.formatData(this.state.data);
-    console.log(dataInput);
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <PieChart>

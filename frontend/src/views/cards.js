@@ -10,27 +10,16 @@ class CardsOverview extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
-  componentDidMount() {
-    fetch(this.endpoint)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ isLoaded: true, data: result?.data?.keyData });
-        },
-
-        (error) => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
-  }
   render() {
-    console.log(this.state.data);
+    // why does this not hand the updated state to infocard component?
+    // data={this.state.data.lipidCount}
+
     return (
       <div className="cards">
-        <Infocard topic="calories" data={this.state.data.calorieCount} />
-        <Infocard topic="protein" data={this.state.data.proteinCount} />
-        <Infocard topic="carbs" data={this.state.data.carbohydrateCount} />
-        <Infocard topic="lipids" data={this.state.data.lipidCount} />
+        <Infocard user={this.user} topic="calorieCount" />
+        <Infocard user={this.user} topic="proteinCount" />
+        <Infocard user={this.user} topic="carbohydrateCount" />
+        <Infocard user={this.user} topic="lipidCount" />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import { LineChart, XAxis, Tooltip, Line, ResponsiveContainer } from "recharts";
 import "../styles/lineChart.scss";
+import getData from "../helper/fetchData";
 
 class ChartLine extends React.Component {
   constructor(props) {
@@ -12,18 +13,18 @@ class ChartLine extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.endpoint)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ isLoaded: true, data: result.data });
-        },
-
-        (error) => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
+    getData(this.user, this.endpoint).then((response) => {
+      this.setState(response);
+    });
   }
+
+  // how is this actually displayed over time? do the positions of week days change?
+
+  /**
+   * Formats tick to display initial of week day name
+   * @param {number} day
+   * @returns {string} Initial of the week day name
+   */
 
   dayTickFormatter(day) {
     let week = { 1: "M", 2: "T", 3: "W", 4: "T", 5: "F", 6: "S", 7: "S" };
@@ -31,9 +32,15 @@ class ChartLine extends React.Component {
     return tick;
   }
 
+  /**
+   * Styles the tooltip with custom styling
+   * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
+   * @param {Object} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @returns {HTMLDivElement} Div element containing the markup and custom styling
+   */
+
   // why does this print more than the payload? why is this in an array?
   customTooltip({ active, payload }) {
-    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="lineChart__tooltip">
@@ -48,7 +55,7 @@ class ChartLine extends React.Component {
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <LineChart
-          margin={{ top: 0, right: 0, left: 0, bottom: 16 }}
+          margin={{ top: 90, right: 0, left: 0, bottom: 16 }}
           data={this.state.data.sessions}
           style={{
             background:
@@ -74,8 +81,9 @@ class ChartLine extends React.Component {
               fontWeight: "500",
               lineHeight: "24px",
             }}
+            tickMargin={5}
             interval="preserveStartEnd"
-            padding={{ left: 15, right: 15 }}
+            // padding={{ left: 15, right: 15 }}
           />
           <Tooltip content={this.customTooltip} offset={5} cursor={false} />
           <Line

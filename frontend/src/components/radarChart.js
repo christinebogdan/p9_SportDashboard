@@ -4,10 +4,9 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
-  Legend,
 } from "recharts";
+import getData from "../helper/fetchData";
 
 class ChartRadar extends React.Component {
   constructor(props) {
@@ -15,67 +14,18 @@ class ChartRadar extends React.Component {
     this.endpoint = this.props.endpoint;
     this.user = this.props.user;
     this.state = { error: null, isLoaded: false, data: {} };
-    this.data = [
-      {
-        subject: "Math",
-        A: 120,
-        B: 110,
-        fullMark: 150,
-      },
-      {
-        subject: "Chinese",
-        A: 98,
-        B: 130,
-        fullMark: 150,
-      },
-      {
-        subject: "English",
-        A: 86,
-        B: 130,
-        fullMark: 150,
-      },
-      {
-        subject: "Geography",
-        A: 99,
-        B: 100,
-        fullMark: 150,
-      },
-      {
-        subject: "Physics",
-        A: 85,
-        B: 90,
-        fullMark: 150,
-      },
-      {
-        subject: "History",
-        A: 65,
-        B: 85,
-        fullMark: 150,
-      },
-    ];
   }
 
   componentDidMount() {
-    fetch(this.endpoint)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({ isLoaded: true, data: result.data });
-        },
-
-        (error) => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
+    getData(this.user, this.endpoint).then((response) => {
+      this.setState(response);
+    });
   }
 
   formatData({ kind, data }) {
-    console.log(kind);
-    console.log(data);
     let formattedData = [];
     if (data) {
       formattedData = data.map((entry, index) => {
-        console.log("kind: ", kind[entry.kind]);
         return {
           value: entry.value,
           kind:
@@ -88,7 +38,6 @@ class ChartRadar extends React.Component {
   }
 
   render() {
-    console.log(this.state.data.data);
     let dataInput = this.formatData(this.state.data);
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
