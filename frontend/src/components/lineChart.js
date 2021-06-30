@@ -32,15 +32,23 @@ class ChartLine extends React.Component {
     return tick;
   }
 
+  // refer to TypeDef here?
   /**
    * Styles the tooltip with custom styling
    * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
-   * @param {Object} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @param {Object[]} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @param {Object} payload[].value - The value of the activeDot that the tooltip is created for
    * @returns {HTMLDivElement} Div element containing the markup and custom styling
    */
 
-  // why does this print more than the payload? why is this in an array?
-  customTooltip({ active, payload }) {
+  // @param {Object} customToolTip - description
+  // @param {boolean} customToolTip.active - description
+
+  // why is payload not printed, but entire array of objects?
+  // cannot see active anywhere?
+
+  getCustomTooltipElement({ active, payload }) {
+    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="lineChart__tooltip">
@@ -85,9 +93,13 @@ class ChartLine extends React.Component {
             interval="preserveStartEnd"
             // padding={{ left: 15, right: 15 }}
           />
-          <Tooltip content={this.customTooltip} offset={5} cursor={false} />
+          <Tooltip
+            content={this.getCustomTooltipElement}
+            offset={5}
+            cursor={false}
+          />
           <Line
-            type="basis"
+            type="monotone"
             dataKey="sessionLength"
             strokeWidth={2}
             stroke="url('#linear')"

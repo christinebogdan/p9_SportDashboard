@@ -36,11 +36,8 @@ class ChartBar extends React.Component {
   dayTickFormatter(day) {
     const date = new Date(day);
     // hier zusammenfassen und direkt returnen
-    const dataKey = date.getDate();
-    return dataKey;
+    return date.getDate();
   }
-
-  // is SpanElement the correct type?
 
   /**
    * Creates styled spans for the chart's legend text items
@@ -66,16 +63,28 @@ class ChartBar extends React.Component {
     );
   }
 
-  // how about parameters that are automatically handed to function?
+  // do i have to list all key value pairs or just the ones I need?
 
+  /**
+   * ToolTipPayload - Source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @typedef Payload
+   * @type {Object[]}
+   * @property {string} value - The value in the chart that the tooltip is created for
+   */
+
+  // wie genau refere ich hier zur TypeDef?
   /**
    * Creates styled div element for custom tooltip
    * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
-   * @param {Object} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+   * @param {Payload}
+  //  * @param {Object[]} payload - The source data to be displayed in tooltip (automatically handed to function by Tooltip component)
+  //  * @param {Object} payload[].value - The value of the bar that the tooltip is created for
    * @returns {HTMLDivElement} Div element containing the markup and custom styling
    */
-  // umbenennen zu Verb und Object - get/createCustomTooltipElement
-  customTooltip({ active, payload }) {
+
+  // why does this method not show above mentioned params?
+  getCustomTooltipElement({ active, payload }) {
+    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="barChart__tooltip">
@@ -109,7 +118,7 @@ class ChartBar extends React.Component {
           />
           <Tooltip
             cursor={{ fill: "rgba(196, 196, 196, 0.5)" }}
-            content={this.customTooltip}
+            content={this.getCustomTooltipElement}
           />
           <Legend
             iconSize={8}
