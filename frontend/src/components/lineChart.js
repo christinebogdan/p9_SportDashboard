@@ -6,7 +6,6 @@ import getData from "../helper/fetchData";
 class ChartLine extends React.Component {
   constructor(props) {
     super(props);
-    // how do I destructure this - do I need to use this?
     this.user = this.props.user;
     this.endpoint = this.props.endpoint;
     this.state = { error: null, isLoaded: false, data: {} };
@@ -21,34 +20,23 @@ class ChartLine extends React.Component {
   // how is this actually displayed over time? do the positions of week days change?
 
   /**
-   * Formats tick to display initial of week day name
-   * @param {number} day
+   * Gets initial of the week day based on date
+   * @param {number} day - Number of the day of the week starting from Monday, one-based
    * @returns {string} Initial of the week day name
    */
-
-  dayTickFormatter(day) {
+  getWeekDayInitialFromDate(day) {
     let week = { 1: "M", 2: "T", 3: "W", 4: "T", 5: "F", 6: "S", 7: "S" };
-    let tick = week[day];
-    return tick;
+    return week[day];
   }
 
-  // refer to TypeDef here?
   /**
-   * Styles the tooltip with custom styling
-   * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
-   * @param {Object[]} payload - object that includes the source data to be displayed in tooltip (automatically handed to function by Tooltip component)
-   * @param {Object} payload[].value - The value of the activeDot that the tooltip is created for
-   * @returns {HTMLDivElement} Div element containing the markup and custom styling
+   * Creates styled div element for custom tooltip
+   * @param {Object} event - Automatically handed to function by Tooltip component
+   * @param {boolean} event.active - State of the tooltip
+   * @param {Object[]} event.payload - The source data to be displayed in tooltip
+   * @returns {HTMLDivElement | null} Div element containing the markup and custom styling or null
    */
-
-  // @param {Object} customToolTip - description
-  // @param {boolean} customToolTip.active - description
-
-  // why is payload not printed, but entire array of objects?
-  // cannot see active anywhere?
-
   getCustomTooltipElement({ active, payload }) {
-    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="lineChart__tooltip">
@@ -82,7 +70,7 @@ class ChartLine extends React.Component {
             dataKey="day"
             tickLine={false}
             axisLine={false}
-            tickFormatter={this.dayTickFormatter}
+            tickFormatter={this.getWeekDayInitialFromDate}
             tick={{
               fill: "rgba(255,255,255,0.5)",
               fontSize: "12px",

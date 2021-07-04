@@ -29,13 +29,12 @@ class ChartBar extends React.Component {
   }
 
   /**
-   * Formats tick to only display the number of the day of the month
+   * Formats a date to only display the number of the day of the month
    * @param {string} day - Date of the day in format "yyyy-mm-dd"
    * @returns {number} The number of the day of the month
    */
-  dayTickFormatter(day) {
+  getDayFromDate(day) {
     const date = new Date(day);
-    // hier zusammenfassen und direkt returnen
     return date.getDate();
   }
 
@@ -44,9 +43,7 @@ class ChartBar extends React.Component {
    * @param {string} value - Name of the corresponding bars
    * @returns {HTMLSpanElement} Span element wrapping the value param with styling
    */
-
-  // rename to getStyledLegendText
-  renderLegendTextColor(value) {
+  getLegendText(value) {
     return (
       <span
         style={{
@@ -63,28 +60,14 @@ class ChartBar extends React.Component {
     );
   }
 
-  // do i have to list all key value pairs or just the ones I need?
-
-  /**
-   * ToolTipPayload - Source data to be displayed in tooltip (automatically handed to function by Tooltip component)
-   * @typedef Payload
-   * @type {Object[]}
-   * @property {string} value - The value in the chart that the tooltip is created for
-   */
-
-  // wie genau refere ich hier zur TypeDef?
   /**
    * Creates styled div element for custom tooltip
-   * @param {boolean} active - state of the tooltip (automatically handed to function by Tooltip component)
-   * @param {Payload}
-  //  * @param {Object[]} payload - The source data to be displayed in tooltip (automatically handed to function by Tooltip component)
-  //  * @param {Object} payload[].value - The value of the bar that the tooltip is created for
-   * @returns {HTMLDivElement} Div element containing the markup and custom styling
+   * @param {Object} event - Automatically handed to function by Tooltip component
+   * @param {boolean} event.active - State of the tooltip
+   * @param {Object[]} event.payload - The source data to be displayed in tooltip
+   * @returns {HTMLDivElement | null} Div element containing the markup and custom styling or null
    */
-
-  // why does this method not show above mentioned params?
   getCustomTooltipElement({ active, payload }) {
-    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="barChart__tooltip">
@@ -97,6 +80,7 @@ class ChartBar extends React.Component {
   }
 
   render() {
+    // background of chart not displayed
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <BarChart data={this.state.data.sessions} barGap={8} barSize={7}>
@@ -105,7 +89,7 @@ class ChartBar extends React.Component {
             padding={{ left: 10, right: 10 }}
             scale="point"
             dataKey="day"
-            tickFormatter={this.dayTickFormatter}
+            tickFormatter={this.getDayFromDate}
             tickLine={false}
             tick={{ transform: "translate(0,16)" }}
             axisLine={{ stroke: "#DEDEDE" }}
@@ -125,7 +109,7 @@ class ChartBar extends React.Component {
             iconType="circle"
             verticalAlign="top"
             align="right"
-            formatter={this.renderLegendTextColor}
+            formatter={this.getLegendText}
             wrapperStyle={{
               paddingBottom: "47px",
             }}

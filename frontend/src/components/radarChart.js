@@ -22,6 +22,13 @@ class ChartRadar extends React.Component {
     });
   }
 
+  /**
+   * Format data from API call to fit to Rechart's expected data format
+   * @param {Object} data - The data received from the API call
+   * @param {Object} data.kind - Object containing the names for each kind of workout
+   * @param {Object[]} - Array containing the values for each kind of workout in two key value pairs
+   * @returns {Object[]} Formatted data including placeholder value to allow one value to be displayed as bar without using 100%
+   */
   formatData({ kind, data }) {
     let formattedData = [];
     if (data) {
@@ -43,8 +50,6 @@ class ChartRadar extends React.Component {
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <RadarChart
           outerRadius={90}
-          // width={730}
-          // height={250}
           data={dataInput}
           style={{
             backgroundColor: "#282D30",
