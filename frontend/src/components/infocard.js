@@ -4,7 +4,6 @@ import carbohydrateCount from "../images/carbs-icon.png";
 import lipidCount from "../images/fat-icon.png";
 import proteinCount from "../images/protein-icon.png";
 import "../styles/infocard.scss";
-import getData from "../helper/fetchData";
 
 class Infocard extends React.Component {
   constructor(props) {

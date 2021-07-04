@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/chart.scss";
 import ChartBar from "../components/barChart";
-import ChartPie from "./pieChart";
 import ChartRadar from "./radarChart";
 import ChartLine from "./lineChart";
+import ChartRadialBar from "./radialBarChart";
 
 class Chart extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Chart extends React.Component {
     this.user = this.props.user;
     this.endpoint = this.props.endpoint;
   }
-
+  // use enum
   render() {
     switch (this.type) {
       case "barChart":
@@ -21,8 +21,8 @@ class Chart extends React.Component {
         return <ChartLine user={this.user} endpoint={this.endpoint} />;
       case "radarChart":
         return <ChartRadar user={this.user} endpoint={this.endpoint} />;
-      case "pieChart":
-        return <ChartPie user={this.user} endpoint={this.endpoint} />;
+      case "radialBarChart":
+        return <ChartRadialBar user={this.user} endpoint={this.endpoint} />;
       default:
         return null;
     }

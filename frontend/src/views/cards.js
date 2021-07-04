@@ -13,14 +13,10 @@ class CardsOverview extends React.Component {
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);
-      console.log("Wert geholt");
     });
   }
 
   render() {
-    console.log("Render", this.state);
-    console.log("abc", this.state.data.keyData?.calorieCount);
-
     // why does this not hand the updated state to infocard component?
     // data={this.state.data.lipidCount}
 
