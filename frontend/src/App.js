@@ -1,5 +1,6 @@
 import "./App.css";
 import React from "react";
+import PropTypes from "prop-types";
 import Nav from "./views/nav";
 import Main from "./views/main";
 import Aside from "./views/aside";
@@ -10,7 +11,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.user = this.props.user;
-    // this.endpoint = `http://localhost:3000/user/${this.user}`;
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
@@ -46,11 +46,7 @@ class App extends React.Component {
       return (
         <div className="app">
           <Nav />
-          <Main
-            user={this.user}
-            name={data?.userInfos?.firstName}
-            // keyData={data?.keyData}
-          />
+          <Main user={this.user} name={data?.userInfos?.firstName} />
           <Aside />
           <Footer />
         </div>
@@ -60,3 +56,7 @@ class App extends React.Component {
 }
 
 export default App;
+
+App.propTypes = {
+  user: PropTypes.string.isRequired,
+};

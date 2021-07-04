@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Greeting from "../components/greeting";
 import DailyActivity from "../components/dailyActivity";
 import Charts from "./charts";
@@ -28,3 +29,8 @@ class Main extends React.Component {
 }
 
 export default Main;
+
+Main.propTypes = {
+  user: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};

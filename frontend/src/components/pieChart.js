@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { PieChart, Pie, Label, Cell, ResponsiveContainer } from "recharts";
 import getData from "../helper/fetchData";
 
@@ -15,22 +16,6 @@ class ChartPie extends React.Component {
       this.setState(response);
     });
   }
-
-  // how do I write definition for return value for formatData?
-  // why is there a property "object" of type string in the PieChartData when hovered over?
-
-  /**
-   * Assign the user's score and creating a placeholder object to get a realistic pie chart
-   * @typedef PieChartData
-   * @type {Object[]}
-  //  * @property {string} Object[0].name - Name of the data input for the respective user
-  //  * @property {string} Object[1].name - Name for the data input of the placeholder
-  //  * @property {Number} Object[0].value - Decimal value of the user's score
-  //  * @property {Number} Object[1].value - Remaining decimal value to add up to 1 (i.e. 100%)
-   * @property {string} name - Name of the data input 
-   * @property {Number} value - Decimal value of the score 
-   * @returns
-   */
 
   /**
    * Format data from API call to fit to Rechart's expected data format
@@ -80,8 +65,7 @@ class ChartPie extends React.Component {
   }
 
   render() {
-    console.log(this.state.data);
-    let dataInput = this.formatData(this.state.data);
+    const dataInput = this.formatData(this.state.data);
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <PieChart>
@@ -123,3 +107,8 @@ class ChartPie extends React.Component {
 }
 
 export default ChartPie;
+
+ChartPie.propTypes = {
+  user: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+};

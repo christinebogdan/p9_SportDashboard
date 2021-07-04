@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/barChart.scss";
 import {
   ResponsiveContainer,
@@ -132,3 +133,8 @@ class ChartBar extends React.Component {
   }
 }
 export default ChartBar;
+
+ChartBar.propTypes = {
+  endpoint: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+};

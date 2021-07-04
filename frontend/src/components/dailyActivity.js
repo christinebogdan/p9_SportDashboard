@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/dailyActivity.scss";
 import Chart from "../components/chart";
 
@@ -6,7 +7,6 @@ class DailyActivity extends React.Component {
   constructor(props) {
     super(props);
     this.user = this.props.user;
-    this.endpoint = `http://localhost:3000/user/${this.user}/activity`;
   }
 
   render() {
@@ -20,3 +20,7 @@ class DailyActivity extends React.Component {
 }
 
 export default DailyActivity;
+
+DailyActivity.propTypes = {
+  user: PropTypes.string.isRequired,
+};

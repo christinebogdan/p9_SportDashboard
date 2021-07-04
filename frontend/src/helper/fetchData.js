@@ -1,26 +1,9 @@
-// const fetchData
-// async function fetchData(endpoint) {
-//   const status = {};
-//   try {
-//     const response = await fetch(endpoint);
-//     const data = await response.json();
-//     status.isLoaded = true;
-//     status.data = data;
-//     status.error = null;
-//     return status;
-//   } catch (error) {
-//     status.isLoaded = true;
-//     status.error = error;
-//     return status;
-//   }
-// }
-
-// export default fetchData;
+import PropTypes from "prop-types";
 
 /**
  * Function to make API calls to the different possible endpoints
  * @param {String} user - The number of the user to access the correct data
- * @param {String | Null } endpoint - The endpoint for the required API call
+ * @param {String} [endpoint=""] - The endpoint for the required API call
  * @returns {Promise<Object>} Promise object containing the requested data
  */
 const getData = async (user, endpoint = "") => {
@@ -41,3 +24,12 @@ const getData = async (user, endpoint = "") => {
 };
 
 export default getData;
+
+getData.propTypes = {
+  user: PropTypes.string.isRequired,
+  endpoint: PropTypes.string,
+};
+
+getData.defaultProps = {
+  endpoint: "",
+};

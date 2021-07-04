@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { LineChart, XAxis, Tooltip, Line, ResponsiveContainer } from "recharts";
 import "../styles/lineChart.scss";
 import getData from "../helper/fetchData";
@@ -106,3 +107,8 @@ class ChartLine extends React.Component {
 }
 
 export default ChartLine;
+
+ChartLine.propTypes = {
+  user: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+};

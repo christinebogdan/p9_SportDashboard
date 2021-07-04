@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/greeting.scss";
 
 class Greeting extends React.Component {
@@ -17,3 +18,7 @@ class Greeting extends React.Component {
 }
 
 export default Greeting;
+
+Greeting.propTypes = {
+  name: PropTypes.string.isRequired,
+};

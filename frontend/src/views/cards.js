@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Infocard from "../components/infocard";
 import "../styles/cards.scss";
 import getData from "../helper/fetchData";
@@ -17,17 +18,12 @@ class CardsOverview extends React.Component {
   }
 
   render() {
-    // why does this not hand the updated state to infocard component?
-    // data={this.state.data.lipidCount}
-
-    // this only works if this.state.isLoaded === true && ...
     return (
-      // this.state.isLoaded && (
       <div className="cards">
         <Infocard
           user={this.user}
           topic="calorieCount"
-          data={this.state.data.keyData?.calorieCount ?? "hello"}
+          data={this.state.data.keyData?.calorieCount}
         />
         <Infocard
           user={this.user}
@@ -45,9 +41,12 @@ class CardsOverview extends React.Component {
           data={this.state.data.keyData?.lipidCount}
         />
       </div>
-      // )
     );
   }
 }
 
 export default CardsOverview;
+
+CardsOverview.propTypes = {
+  user: PropTypes.string.isRequired,
+};

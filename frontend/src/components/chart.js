@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "../styles/chart.scss";
 import ChartBar from "../components/barChart";
 import ChartRadar from "./radarChart";
@@ -13,6 +15,10 @@ class Chart extends React.Component {
     this.endpoint = this.props.endpoint;
   }
   // use enum
+  // You can ensure that your prop is limited to specific values by treating
+  // it as an enum.
+  // optionalEnum: PropTypes.oneOf(['News', 'Photos']),
+
   render() {
     switch (this.type) {
       case "barChart":
@@ -30,3 +36,9 @@ class Chart extends React.Component {
 }
 
 export default Chart;
+
+Chart.propTypes = {
+  type: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+};

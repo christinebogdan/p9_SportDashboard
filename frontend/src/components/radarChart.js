@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   ResponsiveContainer,
   RadarChart,
@@ -75,3 +76,8 @@ class ChartRadar extends React.Component {
 }
 
 export default ChartRadar;
+
+ChartRadar.propTypes = {
+  user: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
+};

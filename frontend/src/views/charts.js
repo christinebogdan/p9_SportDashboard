@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Chart from "../components/chart";
 import "../styles/charts.scss";
 
@@ -34,3 +35,7 @@ class Charts extends React.Component {
 }
 
 export default Charts;
+
+Charts.propTypes = {
+  user: PropTypes.string.isRequired,
+};
