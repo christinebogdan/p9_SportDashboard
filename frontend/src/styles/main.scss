@@ -6,10 +6,12 @@
   padding-left: 107px;
   &__content {
     display: flex;
+    width: 100%;
   }
 }
 
 .chartsOverview {
   display: flex;
+  flex: 1 1 80%;
   flex-wrap: wrap;
 }

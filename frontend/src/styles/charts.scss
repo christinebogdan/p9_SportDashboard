@@ -9,15 +9,29 @@
 
 .chart {
   flex-basis: 32%;
+  // display: flex;
+  // justify-content: space-around;
   height: 263px;
   position: relative;
 }
 
-.pieChart__headline {
+// .pieChart__headline {
+//   margin: 0;
+//   position: absolute;
+//   top: 5%;
+//   left: 5%;
+// }
+
+.radialBarChart__headline {
   margin: 0;
   position: absolute;
-  top: 5%;
-  left: 5%;
+  top: 10%;
+  left: 10%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
 }
 
 .lineChart__headline {
