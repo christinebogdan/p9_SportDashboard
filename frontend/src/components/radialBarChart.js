@@ -138,5 +138,5 @@ export default ChartRadialBar;
 
 ChartRadialBar.propTypes = {
   user: PropTypes.string.isRequired,
-  endpoint: PropTypes.string.isRequired,
+  endpoint: PropTypes.string,
 };

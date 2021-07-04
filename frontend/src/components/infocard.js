@@ -48,5 +48,5 @@ export default Infocard;
 Infocard.propTypes = {
   user: PropTypes.string.isRequired,
   topic: PropTypes.string.isRequired,
-  data: PropTypes.number.isRequired,
+  data: PropTypes.number,
 };

@@ -40,5 +40,5 @@ export default Chart;
 Chart.propTypes = {
   type: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
-  endpoint: PropTypes.string.isRequired,
+  endpoint: PropTypes.string,
 };
