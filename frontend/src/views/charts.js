@@ -24,9 +24,9 @@ class Charts extends React.Component {
         <div className={`chart radarchart`}>
           <Chart type="radarChart" user={this.user} endpoint={"/performance"} />
         </div>
-        <div className={`chart piechart`}>
-          <h3 className="pieChart__headline">Score</h3>
-          <Chart type="pieChart" user={this.user} />
+        <div className={`chart radialchart`}>
+          <h3 className="radialBarChart__headline">Score</h3>
+          <Chart type="radialBarChart" user={this.user} />
         </div>
       </div>
     );
