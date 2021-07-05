@@ -17,12 +17,12 @@ class Main extends React.Component {
       <main className="main">
         <Greeting name={this.name} />
         <div className="main__content">
-          <div className="chartsOverview">
-            <DailyActivity user={this.user} />
-            <Charts user={this.user} />
-          </div>
+          {/* <div className="chartsOverview"> */}
+          <DailyActivity user={this.user} />
+          <Charts user={this.user} />
           <Cards user={this.user} />
         </div>
+        {/* </div> */}
       </main>
     );
   }
