@@ -18,7 +18,7 @@ class ChartRadar extends React.Component {
       error: null,
       isLoaded: false,
       data: {},
-      isSmall: window.innerWidth < 1200 ? true : false,
+      isSmall: window.innerWidth < 1300 ? true : false,
     };
   }
 
@@ -29,11 +29,11 @@ class ChartRadar extends React.Component {
 
     /**
      * Sets the isSmall key to true or false depending on window's inner width
-     * @param {document#event:resize} event
-     * @listens document#resize
+     * @param {window#event:resize} event
+     * @listens window#resize
      */
     const handleResize = () => {
-      this.setState({ isSmall: window.innerWidth < 1200 ? true : false });
+      this.setState({ isSmall: window.innerWidth < 1465 ? true : false });
     };
 
     window.addEventListener("resize", handleResize);
@@ -66,7 +66,7 @@ class ChartRadar extends React.Component {
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <RadarChart
-          outerRadius={this.state.isSmall ? "40%" : "80%"}
+          outerRadius={this.state.isSmall ? "60%" : "80%"}
           data={dataInput}
           style={{
             backgroundColor: "#282D30",
