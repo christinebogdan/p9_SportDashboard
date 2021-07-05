@@ -1,5 +1,19 @@
+@mixin responsive {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 .cards {
-  grid-area: cards;
-  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // margin-right: 20px;
   margin-left: 10px;
+  grid-area: cards;
+  margin-bottom: 70px;
+  @include responsive() {
+    margin-bottom: 0;
+    height: fit-content;
+  }
 }

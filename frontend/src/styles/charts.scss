@@ -1,26 +1,32 @@
+@mixin responsive {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 .charts {
-  flex-basis: 100%;
+  grid-area: charts;
+  // flex-basis: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
   margin-bottom: 70px;
+  @include responsive {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
 }
 
 .chart {
   flex-basis: 32%;
-  // display: flex;
-  // justify-content: space-around;
   height: 263px;
   position: relative;
+  @include responsive {
+    flex-basis: 48%;
+    height: 180px;
+  }
 }
-
-// .pieChart__headline {
-//   margin: 0;
-//   position: absolute;
-//   top: 5%;
-//   left: 5%;
-// }
 
 .radialBarChart__headline {
   margin: 0;

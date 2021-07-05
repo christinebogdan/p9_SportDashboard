@@ -1,3 +1,9 @@
+@mixin responsive {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 .card {
   display: flex;
   align-items: center;
@@ -6,16 +12,27 @@
   padding-bottom: 32px;
   height: 124px;
   width: 258px;
+  @include responsive() {
+    height: 62px;
+  }
   &__image {
     width: 60px;
     height: 60px;
     margin-right: 24px;
+    @include responsive() {
+      width: 50px;
+      height: 50px;
+    }
   }
   &__text--stat {
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     margin: 0;
+    @include responsive() {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
   &__text--cat {
     font-weight: 500;
@@ -23,5 +40,9 @@
     line-height: 24px;
     color: #74798c;
     margin: 2px 0 0 0;
+    @include responsive() {
+      font-size: 12px;
+      line-height: 22px;
+    }
   }
 }

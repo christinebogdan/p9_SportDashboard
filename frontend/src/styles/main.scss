@@ -1,17 +1,38 @@
+@mixin responsive {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 .main {
   display: flex;
   flex-wrap: wrap;
   grid-area: main;
   padding-top: 68px;
   padding-left: 107px;
+  @include responsive() {
+    padding-top: 48px;
+    padding-left: 77px;
+  }
   &__content {
-    display: flex;
+    // display: flex;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr fit-content;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "daily cards"
+      "charts cards";
+    @include responsive() {
+      grid-template-areas:
+        "daily cards"
+        "charts charts";
+    }
   }
 }
 
-.chartsOverview {
-  display: flex;
-  flex: 1 1 80%;
-  flex-wrap: wrap;
-}
+// .chartsOverview {
+//   display: flex;
+//   flex: 1 1 80%;
+//   flex-wrap: wrap;
+// }
