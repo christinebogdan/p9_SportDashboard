@@ -81,7 +81,7 @@ class ChartBar extends React.Component {
   }
 
   render() {
-    // background of chart not displayed
+    // cursor not displayed despite cursor=true
     return (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <BarChart data={this.state.data.sessions} barGap={8} barSize={7}>
@@ -101,6 +101,7 @@ class ChartBar extends React.Component {
             axisLine={false}
             tick={{ transform: "translate(30,0)" }}
           />
+          {/* https://github.com/recharts/recharts/issues/2135 */}
           <Tooltip
             cursor={{ fill: "rgba(196, 196, 196, 0.5)" }}
             content={this.getCustomTooltipElement}
