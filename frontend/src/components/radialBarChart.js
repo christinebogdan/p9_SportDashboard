@@ -116,6 +116,7 @@ class ChartRadialBar extends React.Component {
                 <Cell
                   key={`cell-${index}`}
                   fill={index === 0 ? "#FF0000" : "rgba(255, 0, 0, 0)"}
+                  // fill={`rgba(255, 0, 0, ${index === 0 ? 1 : 0}`}
                 />
               );
             })}
@@ -126,7 +127,7 @@ class ChartRadialBar extends React.Component {
               top: "calc(50% - 60px)",
               left: "calc(50% - 30px)",
             }}
-            content={this.getFormattedLegend(dataInput)}
+            content={() => this.getFormattedLegend(dataInput)}
           />
         </RadialBarChart>
       </ResponsiveContainer>
