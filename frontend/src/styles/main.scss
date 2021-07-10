@@ -6,7 +6,8 @@
 
 .main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  // flex-wrap: wrap;
   grid-area: main;
   padding-top: 68px;
   padding-left: 107px;
@@ -16,6 +17,7 @@
   }
   &__content {
     // display: flex;
+    // flex-grow: 1;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr fit-content;
