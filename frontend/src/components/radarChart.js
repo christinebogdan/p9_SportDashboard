@@ -63,10 +63,11 @@ class ChartRadar extends React.Component {
 
   render() {
     let dataInput = this.formatData(this.state.data);
-    return (
+
+    return dataInput.length > 0 ? (
       <ResponsiveContainer width="99%" height="99%" debounce={1}>
         <RadarChart
-          outerRadius={this.state.isSmall ? "60%" : "80%"}
+          outerRadius={this.state.isSmall ? "60%" : "70%"}
           data={dataInput}
           style={{
             backgroundColor: "#282D30",
@@ -87,7 +88,7 @@ class ChartRadar extends React.Component {
           <Radar dataKey="value" fill="rgba(255, 1, 1, 0.7)" />
         </RadarChart>
       </ResponsiveContainer>
-    );
+    ) : null;
   }
 }
 
