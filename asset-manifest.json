@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/p9_SportDashboard/static/css/main.bfd348bc.chunk.css",
+    "main.js": "/p9_SportDashboard/static/js/main.4ed6cfd8.chunk.js",
+    "main.js.map": "/p9_SportDashboard/static/js/main.4ed6cfd8.chunk.js.map",
+    "runtime-main.js": "/p9_SportDashboard/static/js/runtime-main.8fbd7458.js",
+    "runtime-main.js.map": "/p9_SportDashboard/static/js/runtime-main.8fbd7458.js.map",
+    "static/js/2.cfe2d80f.chunk.js": "/p9_SportDashboard/static/js/2.cfe2d80f.chunk.js",
+    "static/js/2.cfe2d80f.chunk.js.map": "/p9_SportDashboard/static/js/2.cfe2d80f.chunk.js.map",
+    "static/js/3.cb99ace1.chunk.js": "/p9_SportDashboard/static/js/3.cb99ace1.chunk.js",
+    "static/js/3.cb99ace1.chunk.js.map": "/p9_SportDashboard/static/js/3.cb99ace1.chunk.js.map",
+    "index.html": "/p9_SportDashboard/index.html",
+    "static/css/main.bfd348bc.chunk.css.map": "/p9_SportDashboard/static/css/main.bfd348bc.chunk.css.map",
+    "static/js/2.cfe2d80f.chunk.js.LICENSE.txt": "/p9_SportDashboard/static/js/2.cfe2d80f.chunk.js.LICENSE.txt",
+    "static/media/logo.fceb97d6.svg": "/p9_SportDashboard/static/media/logo.fceb97d6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8fbd7458.js",
+    "static/js/2.cfe2d80f.chunk.js",
+    "static/css/main.bfd348bc.chunk.css",
+    "static/js/main.4ed6cfd8.chunk.js"
+  ]
+}
