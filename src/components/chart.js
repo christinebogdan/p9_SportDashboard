@@ -14,10 +14,6 @@ class Chart extends React.Component {
     this.user = this.props.user;
     this.endpoint = this.props.endpoint;
   }
-  // use enum
-  // You can ensure that your prop is limited to specific values by treating
-  // it as an enum.
-  // optionalEnum: PropTypes.oneOf(['News', 'Photos']),
 
   render() {
     switch (this.type) {

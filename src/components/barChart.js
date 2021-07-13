@@ -22,8 +22,6 @@ class ChartBar extends React.Component {
   }
 
   componentDidMount() {
-    // wieso geht das hier mit ".then"? Weil fetch ne promise returned? und damit
-    // dann auch getData eine promise returned?
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);
     });

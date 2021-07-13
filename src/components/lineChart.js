@@ -18,8 +18,6 @@ class ChartLine extends React.Component {
     });
   }
 
-  // how is this actually displayed over time? do the positions of week days change?
-
   /**
    * Gets initial of the week day based on date
    * @param {number} day - Number of the day of the week starting from Monday, one-based
@@ -80,7 +78,6 @@ class ChartLine extends React.Component {
             }}
             tickMargin={5}
             interval="preserveStartEnd"
-            // padding={{ left: 15, right: 15 }}
           />
           <Tooltip
             content={this.getCustomTooltipElement}

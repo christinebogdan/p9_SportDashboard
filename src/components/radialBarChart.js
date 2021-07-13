@@ -89,8 +89,6 @@ class ChartRadialBar extends React.Component {
   }
 
   render() {
-    // throws error <path>, attribute when dataInput added to data
-    // attribute in RadialBarChart - Expected number, "M Nan etc,"
     const dataInput = this.formatData(this.state.data);
     return (
       <ResponsiveContainer width="99%" height="99%">

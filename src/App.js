@@ -14,22 +14,6 @@ class App extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
-  // why use componentDidMount here?
-  // componentDidMount() {
-  // fetch(this.endpoint)
-  //   .then((res) => res.json())
-  //   .then(
-  //     (result) => {
-  //       this.setState({ isLoaded: true, data: result.data });
-  //     },
-  //     // why it's important to handle errors here
-  //     // instead of a catch() block so that we don't swallow
-  //     // exceptions from actual bugs in components.
-  //     (error) => {
-  //       // what is simple error short for? error: error?
-  //       this.setState({ isLoaded: true, error });
-  //     }
-  //   );
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);
