@@ -2,6 +2,11 @@ import React from "react";
 import "../styles/nav.scss";
 import logo from "../images/logo.svg";
 
+/**
+ * A component that renders the nav element
+ * @component
+ * @return {ReactNode}
+ */
 class Nav extends React.Component {
   render() {
     return (

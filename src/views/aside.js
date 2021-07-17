@@ -5,6 +5,11 @@ import swim from "../images/iconswim.png";
 import cycle from "../images/iconcycle.png";
 import lift from "../images/iconlifting.png";
 
+/**
+ * A component that renders the aside element
+ * @component
+ * @return {ReactNode}
+ */
 class Aside extends React.Component {
   render() {
     return (

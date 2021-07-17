@@ -2,6 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/greeting.scss";
 
+/**
+ * A component to dynamically display the page's greeting with the user's first name
+ * @component
+ * @param {string} name - The user's first name
+ * @return {ReactNode}
+ */
 class Greeting extends React.Component {
   render() {
     return (

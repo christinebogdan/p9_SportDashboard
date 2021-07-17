@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import "../styles/dailyActivity.scss";
 import Chart from "../components/chart";
 
+/**
+ * A component that encapsulates the bar Chart and is responsible for its styling
+ * @component
+ * @param {string} user - The user ID
+ * @return {ReactNode}
+ */
 class DailyActivity extends React.Component {
   constructor(props) {
     super(props);

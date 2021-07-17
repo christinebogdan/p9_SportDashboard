@@ -9,6 +9,13 @@ import {
 } from "recharts";
 import getData from "../helper/fetchData";
 
+/**
+ * A component to display the user's day's score in a radial bar chart
+ * @component
+ * @param {string} endpoint - The endpoint for the API call
+ * @param {string} user - The user ID
+ * @return {ReactNode}
+ */
 class ChartRadialBar extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +24,9 @@ class ChartRadialBar extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
+  /**
+   * Fetches data from the respective endpoint and stores the response in the component's state.
+   */
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);

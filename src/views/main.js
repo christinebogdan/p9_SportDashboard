@@ -6,6 +6,13 @@ import Charts from "./charts";
 import Cards from "./cards";
 import "../styles/main.scss";
 
+/**
+ * A component that wraps all components (i.e. greeting block, bar chart block, infocards block, charts block) of the main part of the page in a block
+ * @component
+ * @param {string} user - The user ID
+ * @param {string} name - The user's first name
+ * @return {ReactNode}
+ */
 class Main extends React.Component {
   constructor(props) {
     super(props);

@@ -4,6 +4,13 @@ import { LineChart, XAxis, Tooltip, Line, ResponsiveContainer } from "recharts";
 import "../styles/lineChart.scss";
 import getData from "../helper/fetchData";
 
+/**
+ * A component to display the length of active session per day data in a line chart
+ * @component
+ * @param {string} endpoint - The endpoint for the API call
+ * @param {string} user - The user ID
+ * @return {ReactNode}
+ */
 class ChartLine extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +19,9 @@ class ChartLine extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
+  /**
+   * Fetches data from the respective endpoint and stores the response in the component's state.
+   */
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);

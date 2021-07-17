@@ -7,6 +7,14 @@ import ChartRadar from "./radarChart";
 import ChartLine from "./lineChart";
 import ChartRadialBar from "./radialBarChart";
 
+/**
+ * A component that determines what type of chart is to be displayed.
+ * @component
+ * @param {string} endpoint - The endpoint for the API call
+ * @param {string} user - The user ID
+ * @param {type} type - The type of chart to be displayed, i.e. barChart, lineChart, radarChart or radialBarChart.
+ * @return {ReactNode}
+ */
 class Chart extends React.Component {
   constructor(props) {
     super(props);

@@ -6,6 +6,14 @@ import lipidCount from "../images/fat-icon.png";
 import proteinCount from "../images/protein-icon.png";
 import "../styles/infocard.scss";
 
+/**
+ * A component to display an infocard containing either calories, proteins, carbs or lipids data
+ * @component
+ * @param {string} user - The user ID
+ * @param {string} topic - The topic of the infocard (Calories, Proteins, Carbs or Lipids)
+ * @param {number} data - The data of the respective topic
+ * @return {ReactNode}
+ */
 class Infocard extends React.Component {
   constructor(props) {
     super(props);

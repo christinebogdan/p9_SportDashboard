@@ -4,6 +4,11 @@ import Infocard from "../components/infocard";
 import "../styles/cards.scss";
 import getData from "../helper/fetchData";
 
+/**
+ * A component that wraps the infocards into one block
+ * @component
+ * @return {ReactNode}
+ */
 class CardsOverview extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +16,9 @@ class CardsOverview extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
+  /**
+   * Fetches data from the respective endpoint and stores the response in the component's state.
+   */
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);

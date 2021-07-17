@@ -7,6 +7,12 @@ import Aside from "./views/aside";
 import Footer from "./views/footer";
 import getData from "./helper/fetchData";
 
+/**
+ * A component that encapsulates the entire frontend
+ * @component
+ * @param {string} user - The user ID
+ * @return {ReactNode}
+ */
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +20,9 @@ class App extends React.Component {
     this.state = { error: null, isLoaded: false, data: {} };
   }
 
+  /**
+   * Fetches data from the respective endpoint and stores the response in the component's state.
+   */
   componentDidMount() {
     getData(this.user, this.endpoint).then((response) => {
       this.setState(response);

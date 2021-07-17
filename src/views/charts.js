@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import Chart from "../components/chart";
 import "../styles/charts.scss";
 
+/**
+ * A component that wraps the three smaller charts into a block
+ * @component
+ * @param {string} user - The user ID
+ * @return {ReactNode}
+ */
 class Charts extends React.Component {
   constructor(props) {
     super(props);
